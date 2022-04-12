@@ -11,7 +11,7 @@ public class Praktikum {
             int command = scanner.nextInt();
 
             if (command == 1) {
-                monthlyReport.readingMonthReport();
+                monthlyReport.readingMonthlyReports();
             } else if (command == 2) {
 
             } else if (command == 3) {
@@ -30,7 +30,7 @@ public class Praktikum {
     }
 
     public static void printMenu() {
-        System.out.println("Что вы хотите сделать? ");
+        System.out.println("\nЧто вы хотите сделать? ");
         System.out.println("1 - Считать все месячные отчёты");
         System.out.println("2 - Считать годовой отчёт");
         System.out.println("3 - Сверить отчёты");
