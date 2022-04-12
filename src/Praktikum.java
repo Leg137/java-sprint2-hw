@@ -1,34 +1,17 @@
-import java.io.File;
 import java.util.Scanner;
 
 public class Praktikum {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        MonthlyReport monthlyReport = new MonthlyReport();
 
-        String path = ("Reports/2021/by months");
-        File file = new File(path);
-
-        File catalogByMonths = new File(file.getAbsolutePath());
-
-        System.out.println("Абстрактный путь " + path);
-        System.out.println("Абссолютный путь " + file.getAbsolutePath());
-        System.out.println("Является каталогом? " + catalogByMonths.isDirectory());
-        System.out.println("Является файлом? " + catalogByMonths.isFile());
-
-        System.out.println("Существует файл или каталог? " + catalogByMonths.exists());
-        System.out.println("Может ли приложение прочитать файл? " + catalogByMonths.canRead());
-
-        File[] files = catalogByMonths.listFiles();
-        for (File f : files) {
-            System.out.println(f);
-        }
 
         while (true) {
             printMenu();
             int command = scanner.nextInt();
 
             if (command == 1) {
-
+                monthlyReport.readingMonthReport();
             } else if (command == 2) {
 
             } else if (command == 3) {
