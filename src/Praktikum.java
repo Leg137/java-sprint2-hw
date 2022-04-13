@@ -4,22 +4,22 @@ public class Praktikum {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         MonthlyReport monthlyReport = new MonthlyReport();
-
+        YearlyReport yearlyReport = new YearlyReport();
 
         while (true) {
             printMenu();
             int command = scanner.nextInt();
 
             if (command == 1) {
-                monthlyReport.readingMonthlyReports();
+                monthlyReport.readingMonthlyReport();
             } else if (command == 2) {
-
+                yearlyReport.readingYearlyReport();
             } else if (command == 3) {
-
+                //
             } else if (command == 4) {
-
+                monthlyReport.informationOutputMonthlyReport();
             } else if (command == 5) {
-
+                //yearlyReport.();
             } else if (command == 0) {
                 System.out.println("Выход");
                 break;
