@@ -5,6 +5,7 @@ public class Praktikum {
         Scanner scanner = new Scanner(System.in);
         MonthlyReport monthlyReport = new MonthlyReport();
         YearlyReport yearlyReport = new YearlyReport();
+        Report report = new Report();
 
         while (true) {
             printMenu();
@@ -15,11 +16,11 @@ public class Praktikum {
             } else if (command == 2) {
                 yearlyReport.readingYearlyReport();
             } else if (command == 3) {
-                //
+                report.reviseReport(MonthlyReport.monthlyReportsMaps);
             } else if (command == 4) {
-                monthlyReport.informationOutputMonthlyReport();
+                //
             } else if (command == 5) {
-                //yearlyReport.();
+                yearlyReport.informationOutputYearlyReport();
             } else if (command == 0) {
                 System.out.println("Выход");
                 break;

@@ -1,29 +1,29 @@
-import java.util.HashMap;
+import java.util.TreeMap;
 
 public class YearlyReport {
     String pathCatalogReports = ("Reports");
-    String formatYearlyReport = "m.\\d{4}.csv";
+    String formatYearlyReport = "y.\\d{4}.csv";
     String patternFormatYearlyReport = "y.YYYY.csv";
-    //HashMap<String, String[]> yearlyReportMap;
 
-    HashMap<String, HashMap<String, String[]>> yearlyReportsMaps = new HashMap<>();
+
+    TreeMap<String, TreeMap<String, String[]>> yearlyReportsMaps = new TreeMap<>();
     Report report = new Report();
 
     void readingYearlyReport() {
         report.readingReports(pathCatalogReports, formatYearlyReport, yearlyReportsMaps, patternFormatYearlyReport);
     }
 
-    /*void informationOutputMonthlyReport() {
+    void informationOutputYearlyReport() {
+        TreeMap<String, String[]> yearlyReportMap;
+
         for (String keyMonthlyReportsMaps : yearlyReportsMaps.keySet()) {
             yearlyReportMap = yearlyReportsMaps.get(keyMonthlyReportsMaps);
-            System.out.println("\n" + keyMonthlyReportsMaps);
             for (String keyMonthlyReportMap : yearlyReportMap.keySet()) {
-                System.out.println("\n");
-                String[] itemName = yearlyReportMap.get(keyMonthlyReportMap);
-                for (String item : itemName) {
+                String[] monthlySums = yearlyReportMap.get(keyMonthlyReportMap);
+                for (String item : monthlySums) {
                     System.out.println(item);
                 }
             }
         }
-    }*/
+    }
 }
