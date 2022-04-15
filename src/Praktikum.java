@@ -12,15 +12,15 @@ public class Praktikum {
             int command = scanner.nextInt();
 
             if (command == 1) {
-                monthlyReport.readingMonthlyReport();
+                monthlyReport.readingMonthlyReports(); //+
             } else if (command == 2) {
-                yearlyReport.readingYearlyReport();
+                //yearlyReport.readingYearlyReport(); //+-
             } else if (command == 3) {
-                report.reviseReport(MonthlyReport.monthlyReportsMaps);
+                report.reviseReport(monthlyReport.monthlyReportsMaps); //+-
             } else if (command == 4) {
                 //
             } else if (command == 5) {
-                yearlyReport.informationOutputYearlyReport();
+                //
             } else if (command == 0) {
                 System.out.println("Выход");
                 break;
