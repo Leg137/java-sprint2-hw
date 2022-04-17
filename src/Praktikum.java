@@ -1,26 +1,29 @@
 import java.util.Scanner;
 
+//«Автоматизация бухгалтерии»
 public class Praktikum {
+
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         MonthlyReport monthlyReport = new MonthlyReport();
         YearlyReport yearlyReport = new YearlyReport();
-        Report report = new Report();
+        ReviseReports reviseReports = new ReviseReports();
 
         while (true) {
             printMenu();
             int command = scanner.nextInt();
 
             if (command == 1) {
-                monthlyReport.readingMonthlyReports(); //+
+                monthlyReport.readingMonthlyReports(); //Метод для Считывания всех месячных отчётов
             } else if (command == 2) {
-                //yearlyReport.readingYearlyReport(); //+-
+                yearlyReport.readingYearlyReport(); //Метод для Считывания годового отчёта
             } else if (command == 3) {
-                report.reviseReport(monthlyReport.monthlyReportsMaps); //+-
+                reviseReports.reviseSumReports(monthlyReport.monthlyReportsMaps, yearlyReport.yearlyReportMap); //Метод Сверки отчётов
             } else if (command == 4) {
-                //
+                monthlyReport.outputInfoMonthlyReports(); //Метод Вывода информации о всех месячных отчётах
             } else if (command == 5) {
-                //
+                yearlyReport.outputInfoYearlyReport(); //Метод Вывода информации о годовом отчёте
             } else if (command == 0) {
                 System.out.println("Выход");
                 break;
