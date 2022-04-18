@@ -12,7 +12,7 @@ public class ReviseReports {
     /**
      * Метод для Сверки отчётов
      */
-        TreeMap<String, Double[]> reviseSumMonthlyReport = new TreeMap<>(); //
+        TreeMap<String, Double[]> reviseSumMonthlyReport = new TreeMap<>();
         TreeMap<String, String[]> monthlyReportMap;
 
         if ((monthlyReportsMaps.size() != 0) && (yearlyReportMap.size() != 0)) {

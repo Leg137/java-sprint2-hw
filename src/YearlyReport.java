@@ -25,7 +25,7 @@ public class YearlyReport {
      */
         catalogReports = new File(pathCatalogReports);
         try {
-            File[] pathFileReport = catalogReports.listFiles((dir, name) -> name.matches(formatYearlyReport)); //Отсеиваем файлы не формата
+            File[] pathFileReport = catalogReports.listFiles((dir, name) -> name.matches(formatYearlyReport));
 
             if (pathFileReport != null && pathFileReport.length == 1) {
 
