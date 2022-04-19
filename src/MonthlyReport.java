@@ -2,108 +2,135 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.TreeMap;
-
-//Класс для работы с Месячными отчетами
+/**
+ * Класс для работы с Месячными отчетами
+ */
 public class MonthlyReport {
+    /**
+     * monthlyReportsMaps - Форма итоговой таблицы месячных отчетов;
+     * pathCatalogBy_Months - Каталог с месячными отчетами;
+     * formatMonthlyReport - Формат месячных отчетов.
+     */
+    TreeMap<Integer, TreeMap<String, ArrayList<Double>>> monthlyReportsMaps = new TreeMap<>();
+    static String pathCatalogBy_Months = ("Reports/By Months");
+    static String formatMonthlyReport = "m.\\d{6}.csv";
+    static String patternFormatMonthlyReport = "m.YYYYMM.csv";
+    File catalogByMonths;
+    String itemName;
+    String isExpense;
+    double quantity;
+    double sum;
 
-    TreeMap<String, TreeMap<String, String[]>> monthlyReportsMaps = new TreeMap<>(); //Форма итоговой таблицы месячных отчетов
-    String pathCatalogBy_Months = ("Reports/By Months"); //Каталог с месячными отчетами
-    String formatMonthlyReport = "m.\\d{6}.csv"; //Формат месячных отчетов
-    String patternFormatMonthlyReport = "m.YYYYMM.csv";
-    File catalogBy_Months;
-
-    void readingMonthlyReports() { //Метод для Считывания всех месячных отчётов
-
-        catalogBy_Months = new File(pathCatalogBy_Months); //Каталог с месячными отчетами
+    void readingMonthlyReports() {
+        /**
+         * Метод для Считывания всех месячных отчётов
+         */
+        catalogByMonths = new File(pathCatalogBy_Months);
 
         try {
-            File[] pathsMonthlyReports = catalogBy_Months.listFiles((dir, name) -> name.matches(formatMonthlyReport)); //Отсеиваем файлы не формата
+            File[] pathsMonthlyReports = catalogByMonths.listFiles((dir, name) -> name.matches(formatMonthlyReport));
 
-            if (pathsMonthlyReports != null && pathsMonthlyReports.length != 0 && pathsMonthlyReports.length < 13) { //Проверяем пустую папку месячных отчетов
+            if (pathsMonthlyReports != null && pathsMonthlyReports.length != 0 && pathsMonthlyReports.length < 13) {
 
-                String keyReportName;
-                String keyItemName;
-                String lineMonthlyReport;
-                String[] massivLinesMonthlyReport;
-                BufferedReader readerMonthlyReport;
-                TreeMap<String, String[]> reportMap;
 
                 for (File pathFileReport : pathsMonthlyReports) {
 
-                    keyReportName = pathFileReport.getName().replaceFirst("m.\\d{4}", "")
-                            .replaceFirst(".csv", ""); //Оставляем от названия файла номер месяца
-                    reportMap = new TreeMap<>();
-                    readerMonthlyReport = new BufferedReader(new FileReader(pathFileReport));
+                    Integer monthNumber = Integer.parseInt(pathFileReport.getName().replaceFirst("m.\\d{4}", "")
+                            .replaceFirst(".csv", ""));
+                    TreeMap<String, ArrayList<Double>> monthlyReportMap = new TreeMap<>();
+                    BufferedReader readerMonthlyReport = new BufferedReader(new FileReader(pathFileReport));
+                    String lineMonthlyReport;
 
                     while ((lineMonthlyReport = readerMonthlyReport.readLine()) != null) {
 
-                        massivLinesMonthlyReport = lineMonthlyReport.split(",");
+                        String[] massivLinesMonthlyReport = lineMonthlyReport.split(",");
+                        ArrayList<String> arrayLinesMonthlyReport = new ArrayList<>();
 
-                        if (massivLinesMonthlyReport[1].equalsIgnoreCase("False") ||
-                                massivLinesMonthlyReport[1].equalsIgnoreCase("True")) { //Исключаем строку с шапкой csv файла
+                        for (int i = 0; i < massivLinesMonthlyReport.length; i++) {
 
-                            keyItemName = massivLinesMonthlyReport[0];
-                            reportMap.put(keyItemName, massivLinesMonthlyReport);
-                            monthlyReportsMaps.put(keyReportName, reportMap); //Сохраняем таблицу с месячными данными по ключу - номер месяца
+                            arrayLinesMonthlyReport.add(i, massivLinesMonthlyReport[i]);
                         }
+                        itemName = arrayLinesMonthlyReport.get(0);
+                        isExpense = arrayLinesMonthlyReport.get(1);
+                        ArrayList<Double> arrayProfitAndExpense = new ArrayList<>(2);
+                        arrayProfitAndExpense.add(0.0);
+                        arrayProfitAndExpense.add(0.0);
+
+                        if (isExpense.equalsIgnoreCase("false"))  {
+
+                            quantity = Double.parseDouble(arrayLinesMonthlyReport.get(2));
+                            sum = Double.parseDouble(arrayLinesMonthlyReport.get(3));
+                            arrayProfitAndExpense.add(0, quantity * sum);
+
+                        } else if (isExpense.equalsIgnoreCase("true")) {
+
+                            quantity = Double.parseDouble(arrayLinesMonthlyReport.get(2));
+                            sum = Double.parseDouble(arrayLinesMonthlyReport.get(3));
+                            arrayProfitAndExpense.add(1, quantity * sum);
+                        }
+                        monthlyReportMap.put(itemName, arrayProfitAndExpense);
+                        monthlyReportsMaps.put(monthNumber, monthlyReportMap);
                     }
                     readerMonthlyReport.close();
                 }
             } else {
-                windowsErrorMonthlyReports(); //Метод вывода ошибок при считывании месячных отчетов
+                /**
+                 * Метод вывода ошибок при считывании месячных отчетов
+                 */
+                windowsErrorMonthlyReports();
             }
         } catch (IOException e) {
-            windowsErrorMonthlyReports(); //Метод вывода ошибок при считывании месячных отчетов
+            windowsErrorMonthlyReports();
         }
         System.out.println("Считывание всех месячных отчётов успешно завершено.");
     }
 
-    void windowsErrorMonthlyReports() { //Знаменитый красный круг с крестикомм windows error=)
-
+    void windowsErrorMonthlyReports() {
+        /**
+         * Знаменитый красный круг с крестикомм windows error =)
+         */
         System.out.println(
                 "Ошибка: файл не найден.\n" +
                         "⣿⠀⠀⢀⣴⣾⣿⣿⣿⣿⣦⡀⠀⠀⣿ Возможно файл в формате " + patternFormatMonthlyReport + " не находится в папке:\n" +
-                        "⣿⠀⢠⣿⣿⡉⠙⠿⠋⢉⣻⣿⡄⠀⣿ \"" + catalogBy_Months.getAbsolutePath() + "\".\n" +
+                        "⣿⠀⢠⣿⣿⡉⠙⠿⠋⢉⣻⣿⡄⠀⣿ \"" + catalogByMonths.getAbsolutePath() + "\".\n" +
                         "⣿⠀⢸⣿⣿⣿⠆⠀⠰⣿⣿⣿⡇⠀⣿   m — буква в начале файла отделяет отчёты за месяц(m) и отчёты за год(y);\n" +
                         "⣿⠀⠸⣿⣿⣄⣴⣿⣦⣀⣽⣿⠏⠀⣿YYYY — год. Например, 2022;\n" +
                         "⣿⠀⠀⠙⢿⣿⣿⣿⣿⣿⡿⠋⠀⠀⣿  MM — месяц строго 2мя цифрами." +
                         "Количество файлов в папке не должно превышать 12 месяцев в году.");
     }
 
-    void outputInfoMonthlyReports() { //Метод Вывода информации о всех месячных отчётах
+    void outputInfoMonthlyReports() {
+        /**
+         * Метод Вывода информации о всех месячных отчётах
+         */
+        if (monthlyReportsMaps.size() != 0) {
 
-        String maxProfitItemName = null;
-        String maxExpanseItemName = null;
-        TreeMap<String, String[]> reportMap;
-        String[] massivLinesMonthlyReport;
-        double sumMonthlyReport;
+            for (Integer keyMonthlyReportsMaps : monthlyReportsMaps.keySet()) {
 
-        if (monthlyReportsMaps.size() != 0) { //Проверяем считывались ли месячные отчеты
-
-            for (String keyMonthlyReportsMaps : monthlyReportsMaps.keySet()) {
-
+                String maxProfitItemName = null;
+                String maxExpanseItemName = null;
                 double maxProfitMonthlyReport = 0.0;
                 double maxExpanseMonthlyReport = 0.0;
 
-                reportMap = monthlyReportsMaps.get(keyMonthlyReportsMaps);
+                TreeMap<String, ArrayList<Double>> monthlyReportMap = monthlyReportsMaps.get(keyMonthlyReportsMaps);
 
                 System.out.println("Месяц: " + ReviseReports.calendar(keyMonthlyReportsMaps));
 
-                for (String keyReportMap : reportMap.keySet()) {
+                for (String itemName : monthlyReportMap.keySet()) {
 
-                    massivLinesMonthlyReport = reportMap.get(keyReportMap);
-                    sumMonthlyReport = Double.parseDouble(massivLinesMonthlyReport[2]) * Double.parseDouble(massivLinesMonthlyReport[3]);
+                    ArrayList<Double> arrayProfitAndExpense = monthlyReportMap.get(itemName);
 
-                    if ((massivLinesMonthlyReport[1].equalsIgnoreCase("False")) && (sumMonthlyReport > maxProfitMonthlyReport)) {
+                    if (arrayProfitAndExpense.get(0) > maxProfitMonthlyReport) {
 
-                        maxProfitMonthlyReport = sumMonthlyReport;
-                        maxProfitItemName = keyReportMap;
+                        maxProfitMonthlyReport = arrayProfitAndExpense.get(0);
+                        maxProfitItemName = itemName;
 
-                    } else if ((massivLinesMonthlyReport[1].equalsIgnoreCase("True")) && (sumMonthlyReport > maxExpanseMonthlyReport)) {
+                    } else if (arrayProfitAndExpense.get(1) > maxExpanseMonthlyReport) {
 
-                        maxExpanseMonthlyReport = sumMonthlyReport;
-                        maxExpanseItemName = keyReportMap;
+                        maxExpanseMonthlyReport = arrayProfitAndExpense.get(1);
+                        maxExpanseItemName = itemName;
                     }
                 }
 

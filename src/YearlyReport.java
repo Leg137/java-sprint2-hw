@@ -2,73 +2,100 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.TreeMap;
-
-//Класс для работы с Годовым отчетом
+/**
+ * Класс для работы с Годовым отчетом
+ */
 public class YearlyReport {
-
-    public TreeMap<String, Double[]> yearlyReportMap = new TreeMap<>(); ////Форма итоговой таблицы годового отчета
-    String pathCatalogReports = ("Reports"); //Каталог с годовым отчетом
-    String formatYearlyReport = "y.\\d{4}.csv"; //Формат годового отчета
-    String patternFormatYearlyReport = "y.YYYY.csv";
+    /**
+     * yearlyReportMap - Форма итоговой таблицы годового отчета;
+     * pathCatalogReports - Каталог с годовым отчетом;
+     * formatYearlyReport - Формат годового отчета.
+     */
+    TreeMap<Integer, ArrayList<Double>> yearlyReportMap = new TreeMap<>();
+    static String pathCatalogReports = ("Reports");
+    static String formatYearlyReport = "y.\\d{4}.csv";
+    static String patternFormatYearlyReport = "y.YYYY.csv";
+    static String nameFileYearlyReport;
+    int numberYear;
     File catalogReports;
-    String nameYearlyReport;
+    Integer month;
+    double amount;
+    String isExpense;
 
-    void readingYearlyReport() { //Метод для Считывания годового отчёта
-
-        catalogReports = new File(pathCatalogReports); //Каталог с годовым отчетом
+    void readingYearlyReport() {
+        /**
+         * Метод для Считывания годового отчёта
+         */
+        catalogReports = new File(pathCatalogReports);
         try {
-            File[] pathFileReport = catalogReports.listFiles((dir, name) -> name.matches(formatYearlyReport)); //Отсеиваем файлы не формата
+            File[] pathFileReport = catalogReports.listFiles((dir, name) -> name.matches(formatYearlyReport));
 
-            if (pathFileReport != null && pathFileReport.length == 1) { //Проверяем пустую папку годового отчета
+            if (pathFileReport != null && pathFileReport.length == 1) {
 
-                Double[] sumsYearlyReport = new Double[2];
-                int count = 1; //Счетчик для сохранения годового отчета
-                String keyMonthNumber;
+                nameFileYearlyReport = pathFileReport[0].getName();
+                numberYear = Integer.parseInt(nameFileYearlyReport.replaceFirst("y.", "")
+                        .replaceFirst(".csv", ""));
+                BufferedReader readerYearlyReport = new BufferedReader(new FileReader(pathFileReport[0]));
+                int count = 1;
                 String lineYearlyReport;
-                String[] massivLinesYearlyReport;
-                BufferedReader readerYearlyReport;
 
-                nameYearlyReport = pathFileReport[0].getName();
-                readerYearlyReport = new BufferedReader(new FileReader(pathFileReport[0]));
 
                 while ((lineYearlyReport = readerYearlyReport.readLine()) != null) {
 
-                    massivLinesYearlyReport = lineYearlyReport.split(",");
+                    String[] massivLinesYearlyReport = lineYearlyReport.split(",");
+                    ArrayList<String> arrayLinesYearlyReport = new ArrayList<>();
 
-                    if (massivLinesYearlyReport[0].matches("\\d\\d")) { //Исключаем строку с шапкой csv файла
+                    for (int i = 0; i < massivLinesYearlyReport.length; i++) {
+                        arrayLinesYearlyReport.add(i, massivLinesYearlyReport[i]);
+                    }
+                    if (arrayLinesYearlyReport.get(0).matches("\\d\\d")) {
 
-                        keyMonthNumber = massivLinesYearlyReport[0];
+                        month = Integer.parseInt(arrayLinesYearlyReport.get(0));
+                        amount = Double.parseDouble(arrayLinesYearlyReport.get(1));
+                        isExpense = arrayLinesYearlyReport.get(2);
+                        ArrayList<Double> arrayProfitAndExpense = new ArrayList<>(2);
+                        arrayProfitAndExpense.add(0.0);
+                        arrayProfitAndExpense.add(0.0);
 
-                        if (massivLinesYearlyReport[2].equalsIgnoreCase("False")) {
+                        if (isExpense.equalsIgnoreCase("false")) {
 
-                            sumsYearlyReport[0] = Double.parseDouble(massivLinesYearlyReport[1]);
+                            arrayProfitAndExpense.add(0, amount);
+                            System.out.println(arrayProfitAndExpense.get(0));
 
-                        } else if (massivLinesYearlyReport[2].equalsIgnoreCase("True")) {
+                        } else if (isExpense.equalsIgnoreCase("true")) {
 
-                            sumsYearlyReport[1] = -Double.parseDouble(massivLinesYearlyReport[1]);
+                            arrayProfitAndExpense.add(1, amount);
+                            System.out.println(arrayProfitAndExpense.get(1));
                         }
 
-                        if (count % 2 == 0) { //Сохраняем таблицу, когда доходы и расходы сохранены в массив
+                        if (count % 2 == 0) {
 
-                            yearlyReportMap.put(keyMonthNumber, sumsYearlyReport); //Сохраняем суммы месячных данных по ключу - номер месяца
-                            sumsYearlyReport = new Double[2];
+                            System.out.println(arrayProfitAndExpense.get(0));
+                            System.out.println(arrayProfitAndExpense.get(1));
+                            yearlyReportMap.put(month, arrayProfitAndExpense);
                         }
                         count++;
                     }
                 }
                 readerYearlyReport.close();
             } else {
-                windowsErrorYearlyReport(); //Метод вывода ошибок при считывании месячных отчетов
+                /**
+                 * Метод вывода ошибок при считывании годового отчета
+                 */
+                windowsErrorYearlyReport();
             }
         } catch (IOException e) {
-            windowsErrorYearlyReport(); //Метод вывода ошибок при считывании месячных отчетов
+            windowsErrorYearlyReport();
         }
         System.out.println("Считывание годового отчёта успешно завершено.");
     }
 
-    void windowsErrorYearlyReport() { //Знаменитый красный круг с крестикомм windows error=)
-
+    void windowsErrorYearlyReport() {
+        /**
+         * Знаменитый красный круг с крестикомм windows error =)
+         */
         System.out.println(
                 "Ошибка: файл не найден.\n" +
                         "⣿⠀⠀⢀⣴⣾⣿⣿⣿⣿⣦⡀⠀⠀⣿ Возможно файл в формате " + patternFormatYearlyReport + " не находится в папке:\n" +
@@ -78,33 +105,32 @@ public class YearlyReport {
                         "⣿⠀⠀⠙⢿⣿⣿⣿⣿⣿⡿⠋⠀⠀⣿В папке может находиться только один годовой отчет.");
     }
 
-    void outputInfoYearlyReport() { //Метод Вывода информации о годовом отчёте
+    void outputInfoYearlyReport() {
+        /**
+         * Метод Вывода информации о годовом отчёте
+         */
+        ArrayList<Double> arrayProfitAndExpense;
 
-        double sumProfit = 0.0;
-        double sumExpense = 0.0;
-        double profitMonthlyReport;
-        double averageSumProfit;
-        double averageSumExpense;
-        Double[] sumsYearlyReport;
+        if (yearlyReportMap.size() != 0) {
 
-        if (yearlyReportMap.size() != 0) { //Проверяем считывался ли годовой отчет
+            System.out.println("Рассматриваемый год: \"" + numberYear + "\"");
 
-            System.out.println("Рассматриваемый год: \"" + nameYearlyReport.replaceFirst("y.", "")
-                    .replaceFirst(".csv", "") + "\""); //Оставляем от названия файла номер года
+            double sumProfit = 0.0;
+            double sumExpense = 0.0;
 
-            for (String keyMonthNumber : yearlyReportMap.keySet()) {
+            for (Integer keyYearlyReportMap : yearlyReportMap.keySet()) {
 
-                sumsYearlyReport = yearlyReportMap.get(keyMonthNumber);
-                profitMonthlyReport = sumsYearlyReport[0] + sumsYearlyReport[1];
-                sumProfit += sumsYearlyReport[0];
-                sumExpense += sumsYearlyReport[1];
+                arrayProfitAndExpense = yearlyReportMap.get(keyYearlyReportMap);
+                double profitMonthlyReport = arrayProfitAndExpense.get(0) + arrayProfitAndExpense.get(1);
+                sumProfit += arrayProfitAndExpense.get(0);
+                sumExpense += arrayProfitAndExpense.get(1);
 
-                System.out.println(" Прибыль по месяцу: " + ReviseReports.calendar(keyMonthNumber) + " равна \"" + profitMonthlyReport + "\";");
+                System.out.println(" Прибыль по месяцу: " + ReviseReports.calendar(keyYearlyReportMap) + " равна \"" + profitMonthlyReport + "\";");
             }
-            averageSumProfit = sumProfit / yearlyReportMap.size();
-            averageSumExpense = sumExpense / yearlyReportMap.size();
+            double averageSumProfit = sumProfit / yearlyReportMap.size();
+            double averageSumExpense = sumExpense / yearlyReportMap.size();
 
-            System.out.println(" Средний расход за все месяцы в году: \"" + averageSumExpense + "\";");
+            System.out.println(" Средний расход за все месяцы в году: \"" + -averageSumExpense + "\";");
             System.out.println(" Средний доход за все месяцы в году: \"" + averageSumProfit + "\".");
         } else {
             System.out.println("Перед Выводом информации о годовом отчёте необходимо:\n" +

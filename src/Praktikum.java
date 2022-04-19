@@ -1,6 +1,7 @@
 import java.util.Scanner;
-
-//«Автоматизация бухгалтерии»
+/**
+ * «Автоматизация бухгалтерии»
+ */
 public class Praktikum {
 
     public static void main(String[] args) {
@@ -8,22 +9,36 @@ public class Praktikum {
         Scanner scanner = new Scanner(System.in);
         MonthlyReport monthlyReport = new MonthlyReport();
         YearlyReport yearlyReport = new YearlyReport();
-        ReviseReports reviseReports = new ReviseReports();
 
         while (true) {
             printMenu();
             int command = scanner.nextInt();
 
             if (command == 1) {
-                monthlyReport.readingMonthlyReports(); //Метод для Считывания всех месячных отчётов
+                /**
+                 * Метод для Считывания всех месячных отчётов
+                 */
+                monthlyReport.readingMonthlyReports();
             } else if (command == 2) {
-                yearlyReport.readingYearlyReport(); //Метод для Считывания годового отчёта
+                /**
+                 * Метод для Считывания годового отчёта
+                 */
+                yearlyReport.readingYearlyReport();
             } else if (command == 3) {
-                reviseReports.reviseSumReports(monthlyReport.monthlyReportsMaps, yearlyReport.yearlyReportMap); //Метод Сверки отчётов
+                /**
+                 * Метод Сверки отчётов
+                 */
+                ReviseReports.reviseSumReports(monthlyReport.monthlyReportsMaps, yearlyReport.yearlyReportMap);
             } else if (command == 4) {
-                monthlyReport.outputInfoMonthlyReports(); //Метод Вывода информации о всех месячных отчётах
+                /**
+                 * Метод Вывода информации о всех месячных отчётах
+                 */
+                monthlyReport.outputInfoMonthlyReports();
             } else if (command == 5) {
-                yearlyReport.outputInfoYearlyReport(); //Метод Вывода информации о годовом отчёте
+                /**
+                 * Метод Вывода информации о годовом отчёте
+                 */
+                yearlyReport.outputInfoYearlyReport();
             } else if (command == 0) {
                 System.out.println("Выход");
                 break;
@@ -31,6 +46,7 @@ public class Praktikum {
                 System.out.println("Извините, такой команды пока нет.");
             }
         }
+        scanner.close();
     }
 
     public static void printMenu() {
