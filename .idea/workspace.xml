@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e6b4a515-d41d-4205-a1b3-6945ace20980" name="Changes" comment="Второй спринт">
+      <change beforePath="$PROJECT_DIR$/Reports/y.2021.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/y.2021.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonthlyReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonthlyReport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Praktikum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Praktikum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ReviseReports.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReviseReports.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/YearlyReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/YearlyReport.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="27f4MruJIUDoJGx4uHdFHtqgKqm" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.notifications" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Reports/by months" />
+      <recent name="$PROJECT_DIR$/Reports" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Praktikum" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Praktikum" />
+      <module name="java-sprint2-hw" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Praktikum" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e6b4a515-d41d-4205-a1b3-6945ace20980" name="Changes" comment="" />
+      <created>1649697765108</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1649697765108</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Настроил чтение строк в файлах отчета">
+      <created>1649795075446</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1649795075446</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Рефакторинг кода за счет класса Report">
+      <created>1649877757479</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1649877757479</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Второй спринт">
+      <created>1650202123333</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1650202123333</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Настроил чтение строк в файлах отчета" />
+    <MESSAGE value="Рефакторинг кода за счет класса Report" />
+    <MESSAGE value="Второй спринт" />
+    <option name="LAST_COMMIT_MESSAGE" value="Второй спринт" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
