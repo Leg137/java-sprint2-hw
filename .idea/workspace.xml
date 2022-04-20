@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e6b4a515-d41d-4205-a1b3-6945ace20980" name="Changes" comment="Исправление и переделка">
+    <list default="true" id="e6b4a515-d41d-4205-a1b3-6945ace20980" name="Changes" comment="В классе MonthlyReport в строке 88-89 был комментарий &quot;и тут переменные лучше объявлять по мере использования&quot;    &#10;String maxProfitItemName = null;&#10;Так оно вроде так и объявлено, а если опустить их во внутренний цикл, то вывод данных за границей видимости цикла не увидит эти переменные.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/By Months/m.202101.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/By Months/m.202101.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/By Months/m.202102.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/By Months/m.202102.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/By Months/m.202103.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/By Months/m.202103.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonthlyReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonthlyReport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Praktikum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Praktikum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ReviseReports.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReviseReports.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/YearlyReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/YearlyReport.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +30,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="27f4MruJIUDoJGx4uHdFHtqgKqm" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />

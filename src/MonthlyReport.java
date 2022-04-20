@@ -34,7 +34,6 @@ public class MonthlyReport {
 
             if (pathsMonthlyReports != null && pathsMonthlyReports.length != 0 && pathsMonthlyReports.length < 13) {
 
-
                 for (File pathFileReport : pathsMonthlyReports) {
 
                     Integer monthNumber = Integer.parseInt(pathFileReport.getName().replaceFirst("m.\\d{4}", "")
@@ -62,13 +61,13 @@ public class MonthlyReport {
 
                             quantity = Double.parseDouble(arrayLinesMonthlyReport.get(2));
                             sum = Double.parseDouble(arrayLinesMonthlyReport.get(3));
-                            arrayProfitAndExpense.add(0, quantity * sum);
+                            arrayProfitAndExpense.set(0, quantity * sum);
 
                         } else if (isExpense.equalsIgnoreCase("true")) {
 
                             quantity = Double.parseDouble(arrayLinesMonthlyReport.get(2));
                             sum = Double.parseDouble(arrayLinesMonthlyReport.get(3));
-                            arrayProfitAndExpense.add(1, quantity * sum);
+                            arrayProfitAndExpense.set(1, quantity * sum);
                         }
                         monthlyReportMap.put(itemName, arrayProfitAndExpense);
                         monthlyReportsMaps.put(monthNumber, monthlyReportMap);

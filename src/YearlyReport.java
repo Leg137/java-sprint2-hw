@@ -38,9 +38,11 @@ public class YearlyReport {
                 numberYear = Integer.parseInt(nameFileYearlyReport.replaceFirst("y.", "")
                         .replaceFirst(".csv", ""));
                 BufferedReader readerYearlyReport = new BufferedReader(new FileReader(pathFileReport[0]));
-                int count = 1;
                 String lineYearlyReport;
-
+                int count = 1;
+                ArrayList<Double> arrayProfitAndExpense = new ArrayList<>(2);
+                arrayProfitAndExpense.add(0.0);
+                arrayProfitAndExpense.add(0.0);
 
                 while ((lineYearlyReport = readerYearlyReport.readLine()) != null) {
 
@@ -55,26 +57,21 @@ public class YearlyReport {
                         month = Integer.parseInt(arrayLinesYearlyReport.get(0));
                         amount = Double.parseDouble(arrayLinesYearlyReport.get(1));
                         isExpense = arrayLinesYearlyReport.get(2);
-                        ArrayList<Double> arrayProfitAndExpense = new ArrayList<>(2);
-                        arrayProfitAndExpense.add(0.0);
-                        arrayProfitAndExpense.add(0.0);
 
                         if (isExpense.equalsIgnoreCase("false")) {
 
-                            arrayProfitAndExpense.add(0, amount);
-                            System.out.println(arrayProfitAndExpense.get(0));
+                            arrayProfitAndExpense.set(0, amount);
 
                         } else if (isExpense.equalsIgnoreCase("true")) {
 
-                            arrayProfitAndExpense.add(1, amount);
-                            System.out.println(arrayProfitAndExpense.get(1));
+                            arrayProfitAndExpense.set(1, amount);
                         }
-
                         if (count % 2 == 0) {
 
-                            System.out.println(arrayProfitAndExpense.get(0));
-                            System.out.println(arrayProfitAndExpense.get(1));
                             yearlyReportMap.put(month, arrayProfitAndExpense);
+                            arrayProfitAndExpense = new ArrayList<>(2);
+                            arrayProfitAndExpense.add(0.0);
+                            arrayProfitAndExpense.add(0.0);
                         }
                         count++;
                     }
@@ -121,7 +118,8 @@ public class YearlyReport {
             for (Integer keyYearlyReportMap : yearlyReportMap.keySet()) {
 
                 arrayProfitAndExpense = yearlyReportMap.get(keyYearlyReportMap);
-                double profitMonthlyReport = arrayProfitAndExpense.get(0) + arrayProfitAndExpense.get(1);
+
+                double profitMonthlyReport = arrayProfitAndExpense.get(0) - arrayProfitAndExpense.get(1);
                 sumProfit += arrayProfitAndExpense.get(0);
                 sumExpense += arrayProfitAndExpense.get(1);
 

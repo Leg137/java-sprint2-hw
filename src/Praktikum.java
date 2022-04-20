@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 /**
  * «Автоматизация бухгалтерии»
  */
@@ -40,6 +41,7 @@ public class Praktikum {
                  */
                 yearlyReport.outputInfoYearlyReport();
             } else if (command == 0) {
+
                 System.out.println("Выход");
                 break;
             } else {

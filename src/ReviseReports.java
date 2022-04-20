@@ -14,9 +14,8 @@ public class ReviseReports {
          * Метод для Сверки отчётов
          */
         TreeMap<Integer, ArrayList<Double>> reviseSumMonthlyReport = new TreeMap<>();
+        int monthError;
 
-
-        int monthError = 0;
         if ((monthlyReportsMaps.size() != 0) && (yearlyReportMap.size() != 0)) {
 
             for (Integer keyMonthlyReportsMaps : monthlyReportsMaps.keySet()) {
@@ -31,36 +30,42 @@ public class ReviseReports {
                     monthlySumsProfit += arrayProfitAndExpense.get(0);
                     monthlySumsExpenses += arrayProfitAndExpense.get(1);
                 }
-                ArrayList<Double> arrayMonthlySums = new ArrayList<>();
-
-                arrayMonthlySums.add(0, monthlySumsProfit);
-                arrayMonthlySums.add(1, monthlySumsExpenses);
-
+                ArrayList<Double> arrayMonthlySums = new ArrayList<>(2);
+                arrayMonthlySums.add(0.0);
+                arrayMonthlySums.add(0.0);
+                arrayMonthlySums.set(0, monthlySumsProfit);
+                arrayMonthlySums.set(1, monthlySumsExpenses);
                 reviseSumMonthlyReport.put(keyMonthlyReportsMaps, arrayMonthlySums);
             }
-            boolean successfulRevise = false;
+            int allSuccessfulReviseReports = 0;
 
             for (Integer keyMonthlyReportsMaps : reviseSumMonthlyReport.keySet()) {
 
+                boolean successfulRevise = false;
                 ArrayList<Double> arrayMonthlySums = reviseSumMonthlyReport.get(keyMonthlyReportsMaps);
 
                 for (Integer keyYearlyReportMap : yearlyReportMap.keySet()) {
 
                     ArrayList<Double> arrayYearlySums = yearlyReportMap.get(keyYearlyReportMap);
-                    System.out.println(keyMonthlyReportsMaps + " = " + keyYearlyReportMap);
-                    System.out.println(arrayMonthlySums.get(0) + " = " + arrayYearlySums.get(0));
-                    System.out.println(arrayMonthlySums.get(1) + " = " + arrayYearlySums.get(1));
+
                     if ((keyMonthlyReportsMaps.equals(keyYearlyReportMap)) && (arrayMonthlySums.get(0).equals(arrayYearlySums.get(0))) &&
                             (arrayMonthlySums.get(1).equals(arrayYearlySums.get(1)))) {
 
                         successfulRevise = true;
-                    } else {
-                        monthError = keyMonthlyReportsMaps;
+                        allSuccessfulReviseReports += 1;
                     }
                 }
-                System.out.println("Отчет за месяц: " + calendar(monthError) + " не соответствует годовому отчету.");
+                monthError = keyMonthlyReportsMaps;
+
+                if (!successfulRevise) {
+
+                    System.out.println("Отчет за месяц: " + calendar(monthError) + " не соответствует годовому отчету.");
+
+                } else if (allSuccessfulReviseReports == reviseSumMonthlyReport.size()) {
+
+                    System.out.println("Сверка отчётов успешно завершена, ошибок не обнаружено.");
+                }
             }
-            if (successfulRevise) System.out.println("Сверка отчётов успешно завершена, ошибок не обнаружено.");
         } else {
             System.out.println("Перед Сверкой отчётов необходимо:\n" +
                     "1 - Считать все месячные отчёты;\n" +
