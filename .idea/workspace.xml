@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e6b4a515-d41d-4205-a1b3-6945ace20980" name="Changes" comment="Второй спринт">
-      <change beforePath="$PROJECT_DIR$/Reports/y.2021.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/y.2021.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonthlyReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonthlyReport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Praktikum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Praktikum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ReviseReports.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReviseReports.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/YearlyReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/YearlyReport.java" afterDir="false" />
+    <list default="true" id="e6b4a515-d41d-4205-a1b3-6945ace20980" name="Changes" comment="Исправление и переделка">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +83,21 @@
       <option name="project" value="LOCAL" />
       <updated>1650202123333</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Исправление и переделка">
+      <created>1650406036752</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1650406036752</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Исправление и переделка">
+      <created>1650406096950</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1650406096950</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -108,7 +118,8 @@
     <MESSAGE value="Настроил чтение строк в файлах отчета" />
     <MESSAGE value="Рефакторинг кода за счет класса Report" />
     <MESSAGE value="Второй спринт" />
-    <option name="LAST_COMMIT_MESSAGE" value="Второй спринт" />
+    <MESSAGE value="Исправление и переделка" />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправление и переделка" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
