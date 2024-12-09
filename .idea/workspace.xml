@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="e6b4a515-d41d-4205-a1b3-6945ace20980" name="Changes" comment="В классе MonthlyReport в строке 88-89 был комментарий &quot;и тут переменные лучше объявлять по мере использования&quot;    &#10;String maxProfitItemName = null;&#10;Так оно вроде так и объявлено, а если опустить их во внутренний цикл, то вывод данных за границей видимости цикла не увидит эти переменные.">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CustomFileReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_04_2022,_20_31_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_04_2022__20_31__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/By Months/m.202101.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/By Months/m.202101.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/By Months/m.202102.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/By Months/m.202102.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/By Months/m.202103.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/By Months/m.202103.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/By Months/m.202101.csv" beforeDir="false" afterPath="$PROJECT_DIR$/reports/m.202101.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/By Months/m.202102.csv" beforeDir="false" afterPath="$PROJECT_DIR$/reports/m.202102.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/By Months/m.202103.csv" beforeDir="false" afterPath="$PROJECT_DIR$/reports/m.202103.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/by months/m.202101.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/by months/m.202102.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/by months/m.202103.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/y.2021.csv" beforeDir="false" afterPath="$PROJECT_DIR$/reports/y.2021.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MonthlyReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonthlyReport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Praktikum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Praktikum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Praktikum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ReviseReports.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReviseReports.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/YearlyReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/YearlyReport.java" afterDir="false" />
     </list>
@@ -26,30 +37,54 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Leg137&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:Leg137/java-sprint2-hw.git&quot;,
+    &quot;accountId&quot;: &quot;a06ad168-92ff-4ea0-9dae-e8084c86ca1d&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="27f4MruJIUDoJGx4uHdFHtqgKqm" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.notifications" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/leg/dev/java-sprint2-hw",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Reports/by months" />
       <recent name="$PROJECT_DIR$/Reports" />
+      <recent name="$PROJECT_DIR$/Reports/by months" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Praktikum" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Praktikum" />
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="java-sprint2-hw" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -57,7 +92,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Praktikum" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
